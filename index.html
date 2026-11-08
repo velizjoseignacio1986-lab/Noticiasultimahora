@@ -4,15 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101225">
-  <meta name="description" content="Demo de recargas gratis con paquetes mínimos para Free Fire, Roblox y Spotify. No es una tienda real.">
+  <meta name="description" content="Broma interactiva de recargas para Free Fire, Roblox y Spotify. No es una tienda real.">
   <title>RecargaZone — Packs mini gratis</title>
   <style>
-    :root {
-      color-scheme: dark;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #f8fafc;
-      background: #0c0d18;
-    }
+    :root { color-scheme: dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #f8fafc; background: #0c0d18; }
     * { box-sizing: border-box; }
     body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at top, #25234b 0, #11121f 45%, #0c0d18 100%); }
     header { border-bottom: 1px solid #ffffff20; background: #10111de8; }
@@ -33,36 +28,53 @@
     .price { margin: 1rem 0 .2rem; font-size: 2rem; font-weight: 900; letter-spacing: -.04em; }
     .price small { color: #a7f3d0; font-size: .85rem; letter-spacing: 0; }
     .disclaimer { margin: .6rem 0 0; color: #9294a8; font-size: .8rem; line-height: 1.5; }
-    .card button { width: 100%; margin-top: 1.2rem; padding: .85rem 1rem; border: 0; border-radius: .75rem; color: #11121f; background: #c4b5fd; font: inherit; font-weight: 850; cursor: pointer; transition: transform .15s, background .15s; }
+    button { font: inherit; cursor: pointer; }
+    .card button { width: 100%; margin-top: 1.2rem; padding: .85rem 1rem; border: 0; border-radius: .75rem; color: #11121f; background: #c4b5fd; font-weight: 850; transition: transform .15s, background .15s; }
     .card button:hover { transform: translateY(-2px); background: #ddd6fe; }
-    .card button:focus-visible { outline: 3px solid white; outline-offset: 3px; }
-    .notice { display: none; max-width: 720px; margin: 1.5rem auto 0; padding: 1rem 1.2rem; border: 1px solid #fbbf2455; border-radius: .9rem; color: #fde68a; background: #fbbf2414; line-height: 1.5; }
-    .notice.visible { display: block; }
+    button:focus-visible, input:focus-visible { outline: 3px solid #a78bfa; outline-offset: 3px; }
     .fine-print { margin: 2rem auto 0; color: #9294a8; font-size: .85rem; text-align: center; line-height: 1.6; }
     footer { padding: 1.5rem; border-top: 1px solid #ffffff18; color: #85879b; font-size: .85rem; text-align: center; }
+    .overlay { position: fixed; z-index: 5; inset: 0; display: grid; place-items: center; overflow-y: auto; padding: 1rem; background: #070811dd; }
+    .overlay[hidden] { display: none; }
+    .dialog { width: min(440px, 100%); padding: 1.5rem; border: 1px solid #ffffff20; border-radius: 1.2rem; background: #191a2b; box-shadow: 0 25px 80px #0009; }
+    .dialog h2 { margin: 0 0 .5rem; }
+    .dialog p { color: #b6b8ca; line-height: 1.55; }
+    .dialog label { display: block; margin: 1.2rem 0 .45rem; font-weight: 700; }
+    .dialog input { width: 100%; padding: .85rem 1rem; border: 1px solid #ffffff30; border-radius: .7rem; color: white; background: #10111d; font: inherit; }
+    .dialog .privacy { margin: .65rem 0; color: #a6a8bb; font-size: .82rem; }
+    .actions { display: flex; gap: .75rem; margin-top: 1.2rem; }
+    .actions button { flex: 1; padding: .8rem; border: 0; border-radius: .7rem; font-weight: 800; }
+    .primary { color: #11121f; background: #c4b5fd; }
+    .secondary { color: #e5e7eb; background: #ffffff18; }
+    .status { text-align: center; }
+    .spinner { width: 48px; height: 48px; margin: 1.5rem auto; border: 4px solid #ffffff30; border-top-color: #c4b5fd; border-radius: 50%; animation: spin .8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .donkey { margin: .8rem 0; font-size: 5rem; }
+    .status h2 { font-size: 1.7rem; }
     @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } main { padding-top: 3rem; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
   </style>
 </head>
 <body>
   <header>
     <div class="nav">
       <p class="brand">Recarga<span>Zone</span> ⚡</p>
-      <span class="demo">DEMO · TODO GRATIS</span>
+      <span class="demo">BROMA · DEMO</span>
     </div>
   </header>
   <main>
     <section class="hero" aria-labelledby="page-title">
       <span class="eyebrow">Packs mínimos</span>
       <h1 id="page-title">Tu pack mini, a $0.</h1>
-      <p>Elige el paquete más pequeño de tu juego o servicio favorito. En esta demo todos aparecen gratis.</p>
+      <p>Elige tu pack mini gratis y descubre qué pasa. Es una broma: no hay compras ni recargas reales.</p>
     </section>
-    <section class="cards" aria-label="Packs mínimos gratuitos de demostración">
+    <section class="cards" aria-label="Packs mínimos de demostración">
       <article class="card">
         <div class="icon" aria-hidden="true">🔥</div>
         <h2>Free Fire</h2>
         <p class="pack">Pack mini · 100 diamantes</p>
         <p class="price">Gratis <small>· $0</small></p>
-        <p class="disclaimer">Oferta ficticia de demostración; no entrega diamantes reales.</p>
+        <p class="disclaimer">Broma interactiva; no entrega diamantes reales.</p>
         <button type="button" data-service="Free Fire">Elegir pack mini</button>
       </article>
       <article class="card">
@@ -70,7 +82,7 @@
         <h2>Roblox</h2>
         <p class="pack">Pack mini · 40 Robux</p>
         <p class="price">Gratis <small>· $0</small></p>
-        <p class="disclaimer">Oferta ficticia de demostración; no entrega Robux reales.</p>
+        <p class="disclaimer">Broma interactiva; no entrega Robux reales.</p>
         <button type="button" data-service="Roblox">Elegir pack mini</button>
       </article>
       <article class="card">
@@ -78,21 +90,95 @@
         <h2>Spotify</h2>
         <p class="pack">Pack mini · 1 mes individual</p>
         <p class="price">Gratis <small>· $0</small></p>
-        <p class="disclaimer">Oferta ficticia de demostración; no activa una suscripción.</p>
+        <p class="disclaimer">Broma interactiva; no activa una suscripción.</p>
         <button type="button" data-service="Spotify">Elegir pack mini</button>
       </article>
     </section>
-    <p id="notice" class="notice" role="status" aria-live="polite"></p>
-    <p class="fine-print">Esta página es solo una maqueta de broma. No es una tienda oficial, no procesa pagos y no proporciona productos ni suscripciones reales.</p>
+    <p class="fine-print">No introduzcas contraseñas ni datos personales. El identificador que escribas solo se usa en esta pantalla y no se envía ni se guarda. Sitio de broma no oficial.</p>
   </main>
   <footer>RecargaZone · Demo no oficial · No afiliada a Free Fire, Roblox ni Spotify.</footer>
+
+  <div class="overlay" id="formOverlay" hidden>
+    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="formTitle">
+      <h2 id="formTitle">Elegir pack mini</h2>
+      <p id="formDescription">Escribe tu usuario o ID para continuar con la broma.</p>
+      <form id="demoForm">
+        <label for="userId">Usuario o ID</label>
+        <input id="userId" name="userId" autocomplete="off" maxlength="40" required placeholder="Tu usuario o ID">
+        <p class="privacy">No pongas contraseñas. Este dato no se envía ni se almacena.</p>
+        <div class="actions">
+          <button class="secondary" id="cancelButton" type="button">Cancelar</button>
+          <button class="primary" type="submit">Continuar</button>
+        </div>
+      </form>
+    </section>
+  </div>
+  <div class="overlay" id="statusOverlay" hidden>
+    <section class="dialog status" role="status" aria-live="polite" aria-atomic="true">
+      <div id="loadingState">
+        <div class="spinner" aria-hidden="true"></div>
+        <h2>Realizando tu compra…</h2>
+        <p>Preparando el pack mini de demostración.</p>
+      </div>
+      <div id="successState" hidden>
+        <div aria-hidden="true" style="font-size:3rem">✅</div>
+        <h2>¡Listo, tu recarga fue realizada!</h2>
+        <p>Un momento…</p>
+      </div>
+      <div id="prankState" hidden>
+        <div class="donkey" role="img" aria-label="Burro">🫏</div>
+        <h2>¡Caíste! 😄</h2>
+        <p>Era una broma. No se realizó ninguna compra ni recarga real.</p>
+        <button class="primary" id="closeButton" type="button" style="padding:.8rem 1.2rem;border:0;border-radius:.7rem;font-weight:800">Cerrar</button>
+      </div>
+    </section>
+  </div>
   <script>
-    const notice = document.querySelector('#notice');
+    const formOverlay = document.querySelector('#formOverlay');
+    const statusOverlay = document.querySelector('#statusOverlay');
+    const formDescription = document.querySelector('#formDescription');
+    const userIdInput = document.querySelector('#userId');
+    const loadingState = document.querySelector('#loadingState');
+    const successState = document.querySelector('#successState');
+    const prankState = document.querySelector('#prankState');
+    let selectedService = '';
+
     document.querySelectorAll('[data-service]').forEach((button) => {
       button.addEventListener('click', () => {
-        notice.textContent = `¡Pack mini de ${button.dataset.service} seleccionado! Esto es solo una demo: no se realiza ninguna compra ni recarga real.`;
-        notice.classList.add('visible');
+        selectedService = button.dataset.service;
+        formDescription.textContent = `Escribe tu usuario o ID de ${selectedService} para continuar con la broma.`;
+        userIdInput.value = '';
+        formOverlay.hidden = false;
+        userIdInput.focus();
       });
+    });
+
+    document.querySelector('#cancelButton').addEventListener('click', () => {
+      formOverlay.hidden = true;
+    });
+
+    document.querySelector('#demoForm').addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!userIdInput.value.trim()) return;
+      // El identificador solo se valida localmente; no se envía ni se guarda.
+      formOverlay.hidden = true;
+      loadingState.hidden = false;
+      successState.hidden = true;
+      prankState.hidden = true;
+      statusOverlay.hidden = false;
+      window.setTimeout(() => {
+        loadingState.hidden = true;
+        successState.hidden = false;
+        window.setTimeout(() => {
+          successState.hidden = true;
+          prankState.hidden = false;
+          document.querySelector('#closeButton').focus();
+        }, 2000);
+      }, 1800);
+    });
+
+    document.querySelector('#closeButton').addEventListener('click', () => {
+      statusOverlay.hidden = true;
     });
   </script>
 </body>
