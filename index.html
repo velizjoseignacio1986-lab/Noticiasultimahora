@@ -3,55 +3,75 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101225">
-  <meta name="description" content="Broma interactiva de recargas para Free Fire, Roblox y Spotify. No es una tienda real.">
-  <title>RecargaZone — Packs mini gratis</title>
+  <meta name="theme-color" content="#090b16">
+  <meta name="description" content="Broma interactiva de packs mini para juegos y apps. No es una tienda real.">
+  <title>RecargaZone — Level up</title>
   <style>
-    :root { color-scheme: dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #f8fafc; background: #0c0d18; }
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f5f7ff;
+      background: #090b16;
+      --muted: #a7aec4;
+      --purple: #a78bfa;
+      --cyan: #67e8f9;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at top, #25234b 0, #11121f 45%, #0c0d18 100%); }
-    header { border-bottom: 1px solid #ffffff20; background: #10111de8; }
-    .nav { width: min(1050px, calc(100% - 2rem)); min-height: 72px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .brand { margin: 0; font-size: 1.4rem; font-weight: 900; letter-spacing: -.04em; }
-    .brand span { color: #a78bfa; }
-    .demo { color: #c4b5fd; font-size: .82rem; font-weight: 750; }
-    main { width: min(1050px, calc(100% - 2rem)); margin: auto; padding: 4rem 0 3rem; }
-    .hero { max-width: 700px; margin: 0 auto 2.5rem; text-align: center; }
-    .eyebrow { color: #a78bfa; font-size: .8rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
-    h1 { margin: .75rem 0; font-size: clamp(2.4rem, 7vw, 4.5rem); line-height: 1; letter-spacing: -.06em; }
-    .hero p { margin: 1rem auto 0; max-width: 590px; color: #b6b8ca; font-size: 1.08rem; line-height: 1.65; }
-    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
-    .card { padding: 1.5rem; border: 1px solid #ffffff17; border-radius: 1.3rem; background: linear-gradient(150deg, #202136, #151622 70%); box-shadow: 0 18px 55px #0005; }
-    .icon { display: grid; width: 58px; height: 58px; place-items: center; border-radius: 17px; font-size: 1.8rem; background: #ffffff12; }
-    .card h2 { margin: 1.1rem 0 .4rem; font-size: 1.4rem; }
-    .pack { margin: 0; color: #b6b8ca; }
-    .price { margin: 1rem 0 .2rem; font-size: 2rem; font-weight: 900; letter-spacing: -.04em; }
-    .price small { color: #a7f3d0; font-size: .85rem; letter-spacing: 0; }
-    .disclaimer { margin: .6rem 0 0; color: #9294a8; font-size: .8rem; line-height: 1.5; }
+    body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 50% -20%, #482b89 0, #17162d 36%, #090b16 76%); }
+    body::before { position: fixed; z-index: -1; inset: 0; content: ""; opacity: .14; pointer-events: none; background-image: linear-gradient(#ffffff12 1px, transparent 1px), linear-gradient(90deg, #ffffff12 1px, transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(to bottom, black, transparent 75%); }
+    header { position: sticky; top: 0; z-index: 2; border-bottom: 1px solid #ffffff20; background: #0c0d19eF; backdrop-filter: blur(14px); }
+    .nav { width: min(1120px, calc(100% - 2rem)); min-height: 72px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .brand { margin: 0; font-size: 1.4rem; font-weight: 950; letter-spacing: -.05em; }
+    .brand span { color: var(--cyan); text-shadow: 0 0 18px #67e8f988; }
+    .demo { padding: .45rem .7rem; border: 1px solid #a78bfa55; border-radius: 999px; color: #ddd6fe; background: #a78bfa16; font-size: .75rem; font-weight: 850; letter-spacing: .08em; }
+    main { width: min(1120px, calc(100% - 2rem)); margin: auto; padding: 4.5rem 0 3rem; }
+    .hero { max-width: 760px; margin: 0 auto 2.5rem; text-align: center; }
+    .eyebrow { color: var(--cyan); font-size: .78rem; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
+    h1 { margin: .8rem 0; font-size: clamp(2.7rem, 8vw, 5rem); line-height: .98; letter-spacing: -.075em; text-shadow: 0 0 38px #a78bfa42; }
+    h1 span { color: var(--purple); }
+    .hero p { margin: 1.2rem auto 0; max-width: 620px; color: var(--muted); font-size: 1.08rem; line-height: 1.7; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin: 0 0 1rem; }
+    .section-heading h2 { margin: 0; font-size: 1.15rem; }
+    .section-heading span { color: var(--muted); font-size: .85rem; }
+    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .card { position: relative; overflow: hidden; padding: 1.35rem; border: 1px solid #ffffff19; border-radius: 1.15rem; background: linear-gradient(145deg, #20223bdb, #111321f5); box-shadow: 0 18px 50px #0005; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+    .card::after { position: absolute; top: 0; left: 12%; width: 76%; height: 1px; content: ""; background: linear-gradient(90deg, transparent, var(--accent, var(--purple)), transparent); opacity: .9; }
+    .card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--accent, var(--purple)) 55%, transparent); box-shadow: 0 22px 60px #0007, 0 0 24px color-mix(in srgb, var(--accent, var(--purple)) 14%, transparent); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+    .icon { display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid #ffffff12; border-radius: 16px; background: color-mix(in srgb, var(--accent, var(--purple)) 16%, #121321); font-size: 1.7rem; }
+    .mini-label { color: var(--accent, var(--purple)); font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+    .card h3 { margin: 1rem 0 .25rem; font-size: 1.22rem; }
+    .pack { margin: 0; color: var(--muted); font-size: .9rem; }
+    .price-row { display: flex; align-items: baseline; justify-content: space-between; margin-top: 1rem; padding-top: .9rem; border-top: 1px solid #ffffff12; }
+    .price { margin: 0; font-size: 1.55rem; font-weight: 950; letter-spacing: -.04em; }
+    .price small { color: #86efac; font-size: .78rem; letter-spacing: 0; }
+    .tag { color: #d7d9e8; font-size: .75rem; }
+    .disclaimer { min-height: 2.4em; margin: .55rem 0 0; color: #858ca4; font-size: .76rem; line-height: 1.5; }
     button { font: inherit; cursor: pointer; }
-    .card button { width: 100%; margin-top: 1.2rem; padding: .85rem 1rem; border: 0; border-radius: .75rem; color: #11121f; background: #c4b5fd; font-weight: 850; transition: transform .15s, background .15s; }
-    .card button:hover { transform: translateY(-2px); background: #ddd6fe; }
-    button:focus-visible, input:focus-visible { outline: 3px solid #a78bfa; outline-offset: 3px; }
-    .fine-print { margin: 2rem auto 0; color: #9294a8; font-size: .85rem; text-align: center; line-height: 1.6; }
-    footer { padding: 1.5rem; border-top: 1px solid #ffffff18; color: #85879b; font-size: .85rem; text-align: center; }
-    .overlay { position: fixed; z-index: 5; inset: 0; display: grid; place-items: center; overflow-y: auto; padding: 1rem; background: #070811dd; }
+    .card button { width: 100%; margin-top: 1rem; padding: .8rem 1rem; border: 1px solid #a78bfa80; border-radius: .7rem; color: #f5f3ff; background: linear-gradient(100deg, #7c3aed, #6d5dfc); font-weight: 850; box-shadow: 0 5px 20px #7c3aed35; transition: filter .15s, transform .15s; }
+    .card button:hover { filter: brightness(1.16); transform: translateY(-1px); }
+    button:focus-visible, input:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+    .fine-print { max-width: 760px; margin: 2rem auto 0; color: #9aa1b7; font-size: .84rem; text-align: center; line-height: 1.7; }
+    footer { padding: 1.4rem; border-top: 1px solid #ffffff18; color: #858ca4; font-size: .82rem; text-align: center; }
+    .overlay { position: fixed; z-index: 5; inset: 0; display: grid; place-items: center; overflow-y: auto; padding: 1rem; background: #070811e8; backdrop-filter: blur(8px); }
     .overlay[hidden] { display: none; }
-    .dialog { width: min(440px, 100%); padding: 1.5rem; border: 1px solid #ffffff20; border-radius: 1.2rem; background: #191a2b; box-shadow: 0 25px 80px #0009; }
+    .dialog { width: min(440px, 100%); padding: 1.5rem; border: 1px solid #a78bfa66; border-radius: 1.2rem; background: linear-gradient(145deg, #22223b, #121321); box-shadow: 0 25px 80px #000b, 0 0 32px #8b5cf633; }
     .dialog h2 { margin: 0 0 .5rem; }
-    .dialog p { color: #b6b8ca; line-height: 1.55; }
-    .dialog label { display: block; margin: 1.2rem 0 .45rem; font-weight: 700; }
-    .dialog input { width: 100%; padding: .85rem 1rem; border: 1px solid #ffffff30; border-radius: .7rem; color: white; background: #10111d; font: inherit; }
-    .dialog .privacy { margin: .65rem 0; color: #a6a8bb; font-size: .82rem; }
+    .dialog p { color: #c0c4d5; line-height: 1.55; }
+    .dialog label { display: block; margin: 1.2rem 0 .45rem; font-weight: 750; }
+    .dialog input { width: 100%; padding: .85rem 1rem; border: 1px solid #ffffff30; border-radius: .7rem; color: white; background: #0e0f1b; font: inherit; }
+    .privacy { margin: .65rem 0; color: #a6a8bb !important; font-size: .82rem; }
     .actions { display: flex; gap: .75rem; margin-top: 1.2rem; }
-    .actions button { flex: 1; padding: .8rem; border: 0; border-radius: .7rem; font-weight: 800; }
-    .primary { color: #11121f; background: #c4b5fd; }
+    .actions button { flex: 1; padding: .8rem; border: 0; border-radius: .7rem; font-weight: 850; }
+    .primary { color: #100e20; background: linear-gradient(100deg, #a78bfa, #67e8f9); }
     .secondary { color: #e5e7eb; background: #ffffff18; }
     .status { text-align: center; }
-    .spinner { width: 48px; height: 48px; margin: 1.5rem auto; border: 4px solid #ffffff30; border-top-color: #c4b5fd; border-radius: 50%; animation: spin .8s linear infinite; }
+    .spinner { width: 48px; height: 48px; margin: 1.5rem auto; border: 4px solid #ffffff30; border-top-color: var(--cyan); border-radius: 50%; animation: spin .8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .donkey { margin: .8rem 0; font-size: 5rem; }
+    .donkey { margin: .8rem 0; font-size: 5rem; filter: drop-shadow(0 0 18px #a78bfa88); }
     .status h2 { font-size: 1.7rem; }
-    @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } main { padding-top: 3rem; } }
+    @media (max-width: 820px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } main { padding-top: 3rem; } .section-heading { align-items: start; flex-direction: column; gap: .3rem; } .demo { font-size: .65rem; } }
     @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
   </style>
 </head>
@@ -64,73 +84,73 @@
   </header>
   <main>
     <section class="hero" aria-labelledby="page-title">
-      <span class="eyebrow">Packs mínimos</span>
-      <h1 id="page-title">Tu pack mini, a $0.</h1>
-      <p>Elige tu pack mini gratis y descubre qué pasa. Es una broma: no hay compras ni recargas reales.</p>
+      <span class="eyebrow">🎮 Tu próxima partida empieza aquí</span>
+      <h1 id="page-title">Sube de <span>nivel.</span></h1>
+      <p>Explora packs mini gratis para tus juegos y apps favoritos. Elige uno y descubre la sorpresa: es una broma, no hay recargas reales.</p>
     </section>
-    <section class="cards" aria-label="Packs mínimos de demostración">
-      <article class="card">
-        <div class="icon" aria-hidden="true">🔥</div>
-        <h2>Free Fire</h2>
-        <p class="pack">Pack mini · 100 diamantes</p>
-        <p class="price">Gratis <small>· $0</small></p>
-        <p class="disclaimer">Broma interactiva; no entrega diamantes reales.</p>
-        <button type="button" data-service="Free Fire">Elegir pack mini</button>
+    <div class="section-heading">
+      <h2>⚡ Packs destacados</h2>
+      <span>Todos los packs de esta demo cuestan $0</span>
+    </div>
+    <section class="cards" aria-label="Packs mini de demostración">
+      <article class="card" style="--accent:#fb7185">
+        <div class="card-top"><div class="icon" aria-hidden="true">🔥</div><span class="mini-label">Battle royale</span></div>
+        <h3>Free Fire</h3><p class="pack">Pack mini · 100 diamantes</p>
+        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
+        <p class="disclaimer">No entrega diamantes reales.</p><button type="button" data-service="Free Fire">Elegir pack mini</button>
       </article>
-      <article class="card">
-        <div class="icon" aria-hidden="true">🎮</div>
-        <h2>Roblox</h2>
-        <p class="pack">Pack mini · 40 Robux</p>
-        <p class="price">Gratis <small>· $0</small></p>
-        <p class="disclaimer">Broma interactiva; no entrega Robux reales.</p>
-        <button type="button" data-service="Roblox">Elegir pack mini</button>
+      <article class="card" style="--accent:#e2e8f0">
+        <div class="card-top"><div class="icon" aria-hidden="true">🎮</div><span class="mini-label">Universo gamer</span></div>
+        <h3>Roblox</h3><p class="pack">Pack mini · 40 Robux</p>
+        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
+        <p class="disclaimer">No entrega Robux reales.</p><button type="button" data-service="Roblox">Elegir pack mini</button>
       </article>
-      <article class="card">
-        <div class="icon" aria-hidden="true">🎵</div>
-        <h2>Spotify</h2>
-        <p class="pack">Pack mini · 1 mes individual</p>
-        <p class="price">Gratis <small>· $0</small></p>
-        <p class="disclaimer">Broma interactiva; no activa una suscripción.</p>
-        <button type="button" data-service="Spotify">Elegir pack mini</button>
+      <article class="card" style="--accent:#4ade80">
+        <div class="card-top"><div class="icon" aria-hidden="true">🎵</div><span class="mini-label">Música</span></div>
+        <h3>Spotify</h3><p class="pack">Pack mini · 1 mes individual</p>
+        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
+        <p class="disclaimer">No activa una suscripción.</p><button type="button" data-service="Spotify">Elegir pack mini</button>
+      </article>
+      <article class="card" style="--accent:#facc15">
+        <div class="card-top"><div class="icon" aria-hidden="true">⛏️</div><span class="mini-label">Aventura</span></div>
+        <h3>Minecraft</h3><p class="pack">Pack mini · monedas de prueba</p>
+        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
+        <p class="disclaimer">Pack ficticio, sin monedas reales.</p><button type="button" data-service="Minecraft">Elegir pack mini</button>
+      </article>
+      <article class="card" style="--accent:#60a5fa">
+        <div class="card-top"><div class="icon" aria-hidden="true">🚗</div><span class="mini-label">Acción</span></div>
+        <h3>Call of Duty: Mobile</h3><p class="pack">Pack mini · puntos de prueba</p>
+        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
+        <p class="disclaimer">No entrega puntos ni objetos reales.</p><button type="button" data-service="Call of Duty: Mobile">Elegir pack mini</button>
+      </article>
+      <article class="card" style="--accent:#c084fc">
+        <div class="card-top"><div class="icon" aria-hidden="true">💬</div><span class="mini-label">Comunidad</span></div>
+        <h3>Discord Nitro</h3><p class="pack">Pack mini · mejora de prueba</p>
+        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
+        <p class="disclaimer">No activa Nitro ni suscripciones reales.</p><button type="button" data-service="Discord Nitro">Elegir pack mini</button>
       </article>
     </section>
-    <p class="fine-print">No introduzcas contraseñas ni datos personales. El identificador que escribas solo se usa en esta pantalla y no se envía ni se guarda. Sitio de broma no oficial.</p>
+    <p class="fine-print">⚠️ Esto es una broma interactiva y una maqueta no oficial. No introduzcas contraseñas ni datos personales. El usuario o ID escrito solo se procesa localmente en tu navegador; no se envía ni se guarda. No se realizan compras ni recargas reales.</p>
   </main>
-  <footer>RecargaZone · Demo no oficial · No afiliada a Free Fire, Roblox ni Spotify.</footer>
+  <footer>RecargaZone · Demo no oficial · No afiliada a ninguna de las marcas mostradas.</footer>
 
   <div class="overlay" id="formOverlay" hidden>
     <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="formTitle">
-      <h2 id="formTitle">Elegir pack mini</h2>
+      <h2 id="formTitle">🎁 Elegir pack mini</h2>
       <p id="formDescription">Escribe tu usuario o ID para continuar con la broma.</p>
       <form id="demoForm">
         <label for="userId">Usuario o ID</label>
         <input id="userId" name="userId" autocomplete="off" maxlength="40" required placeholder="Tu usuario o ID">
-        <p class="privacy">No pongas contraseñas. Este dato no se envía ni se almacena.</p>
-        <div class="actions">
-          <button class="secondary" id="cancelButton" type="button">Cancelar</button>
-          <button class="primary" type="submit">Continuar</button>
-        </div>
+        <p class="privacy">No pongas contraseñas. El dato no se envía ni se almacena.</p>
+        <div class="actions"><button class="secondary" id="cancelButton" type="button">Cancelar</button><button class="primary" type="submit">Continuar</button></div>
       </form>
     </section>
   </div>
   <div class="overlay" id="statusOverlay" hidden>
     <section class="dialog status" role="status" aria-live="polite" aria-atomic="true">
-      <div id="loadingState">
-        <div class="spinner" aria-hidden="true"></div>
-        <h2>Realizando tu compra…</h2>
-        <p>Preparando el pack mini de demostración.</p>
-      </div>
-      <div id="successState" hidden>
-        <div aria-hidden="true" style="font-size:3rem">✅</div>
-        <h2>¡Listo, tu recarga fue realizada!</h2>
-        <p>Un momento…</p>
-      </div>
-      <div id="prankState" hidden>
-        <div class="donkey" role="img" aria-label="Burro">🫏</div>
-        <h2>¡Caíste! 😄</h2>
-        <p>Era una broma. No se realizó ninguna compra ni recarga real.</p>
-        <button class="primary" id="closeButton" type="button" style="padding:.8rem 1.2rem;border:0;border-radius:.7rem;font-weight:800">Cerrar</button>
-      </div>
+      <div id="loadingState"><div class="spinner" aria-hidden="true"></div><h2>Realizando tu compra…</h2><p>Preparando el pack mini de demostración.</p></div>
+      <div id="successState" hidden><div aria-hidden="true" style="font-size:3rem">✅</div><h2>¡Listo, tu recarga fue realizada!</h2><p>Un momento…</p></div>
+      <div id="prankState" hidden><div class="donkey" role="img" aria-label="Burro">🫏</div><h2>¡Caíste! 😄</h2><p>Era una broma. No se realizó ninguna compra ni recarga real.</p><button class="primary" id="closeButton" type="button" style="padding:.8rem 1.2rem;border:0;border-radius:.7rem;font-weight:850">Cerrar</button></div>
     </section>
   </div>
   <script>
@@ -141,12 +161,10 @@
     const loadingState = document.querySelector('#loadingState');
     const successState = document.querySelector('#successState');
     const prankState = document.querySelector('#prankState');
-    let selectedService = '';
 
     document.querySelectorAll('[data-service]').forEach((button) => {
       button.addEventListener('click', () => {
-        selectedService = button.dataset.service;
-        formDescription.textContent = `Escribe tu usuario o ID de ${selectedService} para continuar con la broma.`;
+        formDescription.textContent = `Escribe tu usuario o ID de ${button.dataset.service} para continuar con la broma.`;
         userIdInput.value = '';
         formOverlay.hidden = false;
         userIdInput.focus();
