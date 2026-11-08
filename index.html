@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101827">
+  <title>Noticias de Última Hora — La noticia más increíble</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #172033;
+      background: #f3f5f8;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    header {
+      padding: 1.2rem max(1.25rem, calc((100% - 900px) / 2));
+      color: white;
+      background: #101827;
+      border-bottom: 5px solid #ef4444;
+    }
+    .brand { margin: 0; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 850; }
+    .brand span { color: #fb7185; }
+    main { width: min(760px, calc(100% - 2rem)); margin: 3rem auto; }
+    .label {
+      display: inline-block;
+      padding: .35rem .65rem;
+      border-radius: 999px;
+      color: #991b1b;
+      background: #fee2e2;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    article {
+      margin-top: 1rem;
+      padding: clamp(1.4rem, 5vw, 2.5rem);
+      background: white;
+      border: 1px solid #e3e8ef;
+      border-radius: 1.25rem;
+      box-shadow: 0 16px 45px rgb(16 24 39 / 8%);
+    }
+    h1 { margin: .8rem 0 1rem; font-size: clamp(2rem, 7vw, 3.5rem); line-height: 1.08; letter-spacing: -.04em; }
+    .subhead { color: #566176; font-size: 1.15rem; line-height: 1.65; }
+    .emoji { margin: 1.5rem 0; font-size: clamp(3rem, 12vw, 6rem); text-align: center; }
+    button {
+      display: block;
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      border: 0;
+      border-radius: .8rem;
+      color: white;
+      background: #dc2626;
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+    }
+    button:hover { background: #b91c1c; }
+    button:focus-visible { outline: 3px solid #111827; outline-offset: 3px; }
+    #reveal { display: none; margin-top: 1rem; padding: 1rem; border-radius: .8rem; background: #ecfdf5; color: #065f46; font-weight: 700; }
+    #reveal.visible { display: block; }
+    footer { padding: 1.5rem; color: #687386; text-align: center; font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="brand">NOTICIAS <span>DE ÚLTIMA HORA</span></p>
+  </header>
+  <main>
+    <span class="label">Noticia increíble</span>
+    <article>
+      <h1>¡Persona local abre la nevera por quinta vez esperando que aparezca comida nueva!</h1>
+      <p class="subhead">Testigos confirman que volvió a mirar apenas tres minutos después. “Tenía fe”, declaró, antes de encontrar el mismo medio limón.</p>
+      <div class="emoji" aria-hidden="true">🧊🔍</div>
+      <button id="revealButton" type="button" aria-expanded="false" aria-controls="reveal">¿Es verdad? Descúbrelo</button>
+      <p id="reveal" role="status">¡Era una broma! 😄 La nevera no hace milagros, pero este sitio sí sirve una sonrisa.</p>
+    </article>
+  </main>
+  <footer>Humor y buen rollo. Esta página es una broma, no una noticia real.</footer>
+  <script>
+    const button = document.querySelector('#revealButton');
+    const reveal = document.querySelector('#reveal');
+    button.addEventListener('click', () => {
+      reveal.classList.add('visible');
+      button.setAttribute('aria-expanded', 'true');
+      button.textContent = '¡Broma revelada! 😄';
+    });
+  </script>
+</body>
+</html>
