@@ -3,200 +3,142 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090b16">
-  <meta name="description" content="Broma interactiva de packs mini para juegos y apps. No es una tienda real.">
-  <title>RecargaZone — Level up</title>
+  <meta name="theme-color" content="#101510">
+  <meta name="description" content="SeVenexRCG.com — catálogo de demostración de juegos, apps y plataformas.">
+  <title>SeVenexRCG.com — Juegos, apps y plataformas</title>
   <style>
     :root {
       color-scheme: dark;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #f5f7ff;
-      background: #090b16;
-      --muted: #a7aec4;
-      --purple: #a78bfa;
-      --cyan: #67e8f9;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #f5f7f2;
+      background: #101510;
+      --green: #b6f36b;
+      --muted: #a7afa2;
+      --panel: #1a211a;
     }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 50% -20%, #482b89 0, #17162d 36%, #090b16 76%); }
-    body::before { position: fixed; z-index: -1; inset: 0; content: ""; opacity: .14; pointer-events: none; background-image: linear-gradient(#ffffff12 1px, transparent 1px), linear-gradient(90deg, #ffffff12 1px, transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(to bottom, black, transparent 75%); }
-    header { position: sticky; top: 0; z-index: 2; border-bottom: 1px solid #ffffff20; background: #0c0d19eF; backdrop-filter: blur(14px); }
-    .nav { width: min(1120px, calc(100% - 2rem)); min-height: 72px; margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .brand { margin: 0; font-size: 1.4rem; font-weight: 950; letter-spacing: -.05em; }
-    .brand span { color: var(--cyan); text-shadow: 0 0 18px #67e8f988; }
-    .demo { padding: .45rem .7rem; border: 1px solid #a78bfa55; border-radius: 999px; color: #ddd6fe; background: #a78bfa16; font-size: .75rem; font-weight: 850; letter-spacing: .08em; }
-    main { width: min(1120px, calc(100% - 2rem)); margin: auto; padding: 4.5rem 0 3rem; }
-    .hero { max-width: 760px; margin: 0 auto 2.5rem; text-align: center; }
-    .eyebrow { color: var(--cyan); font-size: .78rem; font-weight: 900; letter-spacing: .2em; text-transform: uppercase; }
-    h1 { margin: .8rem 0; font-size: clamp(2.7rem, 8vw, 5rem); line-height: .98; letter-spacing: -.075em; text-shadow: 0 0 38px #a78bfa42; }
-    h1 span { color: var(--purple); }
-    .hero p { margin: 1.2rem auto 0; max-width: 620px; color: var(--muted); font-size: 1.08rem; line-height: 1.7; }
-    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin: 0 0 1rem; }
-    .section-heading h2 { margin: 0; font-size: 1.15rem; }
-    .section-heading span { color: var(--muted); font-size: .85rem; }
-    .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-    .card { position: relative; overflow: hidden; padding: 1.35rem; border: 1px solid #ffffff19; border-radius: 1.15rem; background: linear-gradient(145deg, #20223bdb, #111321f5); box-shadow: 0 18px 50px #0005; transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
-    .card::after { position: absolute; top: 0; left: 12%; width: 76%; height: 1px; content: ""; background: linear-gradient(90deg, transparent, var(--accent, var(--purple)), transparent); opacity: .9; }
-    .card:hover { transform: translateY(-5px); border-color: color-mix(in srgb, var(--accent, var(--purple)) 55%, transparent); box-shadow: 0 22px 60px #0007, 0 0 24px color-mix(in srgb, var(--accent, var(--purple)) 14%, transparent); }
-    .card-top { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
-    .icon { display: grid; width: 52px; height: 52px; place-items: center; border: 1px solid #ffffff12; border-radius: 16px; background: color-mix(in srgb, var(--accent, var(--purple)) 16%, #121321); font-size: 1.7rem; }
-    .mini-label { color: var(--accent, var(--purple)); font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
-    .card h3 { margin: 1rem 0 .25rem; font-size: 1.22rem; }
-    .pack { margin: 0; color: var(--muted); font-size: .9rem; }
-    .price-row { display: flex; align-items: baseline; justify-content: space-between; margin-top: 1rem; padding-top: .9rem; border-top: 1px solid #ffffff12; }
-    .price { margin: 0; font-size: 1.55rem; font-weight: 950; letter-spacing: -.04em; }
-    .price small { color: #86efac; font-size: .78rem; letter-spacing: 0; }
-    .tag { color: #d7d9e8; font-size: .75rem; }
-    .disclaimer { min-height: 2.4em; margin: .55rem 0 0; color: #858ca4; font-size: .76rem; line-height: 1.5; }
-    button { font: inherit; cursor: pointer; }
-    .card button { width: 100%; margin-top: 1rem; padding: .8rem 1rem; border: 1px solid #a78bfa80; border-radius: .7rem; color: #f5f3ff; background: linear-gradient(100deg, #7c3aed, #6d5dfc); font-weight: 850; box-shadow: 0 5px 20px #7c3aed35; transition: filter .15s, transform .15s; }
-    .card button:hover { filter: brightness(1.16); transform: translateY(-1px); }
-    button:focus-visible, input:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
-    .fine-print { max-width: 760px; margin: 2rem auto 0; color: #9aa1b7; font-size: .84rem; text-align: center; line-height: 1.7; }
-    footer { padding: 1.4rem; border-top: 1px solid #ffffff18; color: #858ca4; font-size: .82rem; text-align: center; }
-    .overlay { position: fixed; z-index: 5; inset: 0; display: grid; place-items: center; overflow-y: auto; padding: 1rem; background: #070811e8; backdrop-filter: blur(8px); }
-    .overlay[hidden] { display: none; }
-    .dialog { width: min(440px, 100%); padding: 1.5rem; border: 1px solid #a78bfa66; border-radius: 1.2rem; background: linear-gradient(145deg, #22223b, #121321); box-shadow: 0 25px 80px #000b, 0 0 32px #8b5cf633; }
-    .dialog h2 { margin: 0 0 .5rem; }
-    .dialog p { color: #c0c4d5; line-height: 1.55; }
-    .dialog label { display: block; margin: 1.2rem 0 .45rem; font-weight: 750; }
-    .dialog input { width: 100%; padding: .85rem 1rem; border: 1px solid #ffffff30; border-radius: .7rem; color: white; background: #0e0f1b; font: inherit; }
-    .privacy { margin: .65rem 0; color: #a6a8bb !important; font-size: .82rem; }
-    .actions { display: flex; gap: .75rem; margin-top: 1.2rem; }
-    .actions button { flex: 1; padding: .8rem; border: 0; border-radius: .7rem; font-weight: 850; }
-    .primary { color: #100e20; background: linear-gradient(100deg, #a78bfa, #67e8f9); }
-    .secondary { color: #e5e7eb; background: #ffffff18; }
-    .status { text-align: center; }
-    .spinner { width: 48px; height: 48px; margin: 1.5rem auto; border: 4px solid #ffffff30; border-top-color: var(--cyan); border-radius: 50%; animation: spin .8s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .donkey { margin: .8rem 0; font-size: 5rem; filter: drop-shadow(0 0 18px #a78bfa88); }
-    .status h2 { font-size: 1.7rem; }
-    @media (max-width: 820px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } main { padding-top: 3rem; } .section-heading { align-items: start; flex-direction: column; gap: .3rem; } .demo { font-size: .65rem; } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 75% -15%, #3c562a 0, #1a2418 28rem, #101510 65rem); }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+    header { position: sticky; top: 0; z-index: 3; border-bottom: 1px solid #ffffff18; background: #101510ed; backdrop-filter: blur(14px); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand { display: flex; align-items: center; gap: .65rem; font-size: 1.15rem; font-weight: 950; letter-spacing: -.04em; white-space: nowrap; }
+    .brand-mark { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 12px; color: #14200c; background: var(--green); }
+    .brand span { color: var(--green); }
+    nav { display: flex; align-items: center; gap: .45rem; }
+    .nav-link { padding: .65rem .85rem; border-radius: 999px; color: #c4cbbf; font-size: .9rem; font-weight: 750; transition: background .15s, color .15s; }
+    .nav-link:hover, .nav-link.active { color: #13190e; background: var(--green); }
+    .hero { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 2rem; padding: 5.2rem 0 4rem; }
+    .eyebrow { color: var(--green); font-size: .78rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { max-width: 700px; margin: .9rem 0 1rem; font-size: clamp(2.8rem, 7vw, 5.4rem); line-height: .96; letter-spacing: -.075em; }
+    h1 span { color: var(--green); }
+    .hero-copy { max-width: 590px; color: #c0c8b9; font-size: 1.05rem; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+    .cta { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: .7rem 1rem; border: 1px solid #b6f36b55; border-radius: .75rem; color: #101510; background: var(--green); font-weight: 850; }
+    .cta.secondary { color: #e7ecdf; background: #ffffff0a; border-color: #ffffff2a; }
+    .hero-art { min-height: 290px; display: grid; place-items: center; position: relative; overflow: hidden; border: 1px solid #ffffff1b; border-radius: 2rem; background: linear-gradient(140deg, #293a25, #151c16 72%); box-shadow: 0 30px 80px #0006; }
+    .hero-art::before, .hero-art::after { position: absolute; content: ""; border: 1px solid #b6f36b35; border-radius: 50%; }
+    .hero-art::before { width: 290px; height: 290px; }
+    .hero-art::after { width: 210px; height: 210px; }
+    .orb { z-index: 1; display: grid; width: 120px; height: 120px; place-items: center; border: 1px solid #ffffff4a; border-radius: 35px; color: #14200c; background: linear-gradient(135deg, #d7ffa2, #8ad244); box-shadow: 0 0 70px #b6f36b55; font-size: 3.2rem; transform: rotate(-8deg); }
+    .float { position: absolute; z-index: 2; display: grid; width: 54px; height: 54px; place-items: center; border: 1px solid #ffffff28; border-radius: 17px; background: #202a20; font-size: 1.5rem; box-shadow: 0 12px 30px #0005; }
+    .float.one { top: 22%; left: 20%; transform: rotate(-12deg); }
+    .float.two { right: 18%; bottom: 20%; transform: rotate(12deg); }
+    .catalog { padding: 1.5rem 0 4rem; }
+    .catalog-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+    .catalog-head h2 { margin: .35rem 0 0; font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: -.05em; }
+    .catalog-head p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .filters { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1.3rem 0 1.2rem; }
+    .filter { padding: .62rem .95rem; border: 1px solid #ffffff24; border-radius: 999px; color: #d3dacd; background: #ffffff08; font: inherit; font-size: .87rem; font-weight: 750; cursor: pointer; }
+    .filter:hover, .filter[aria-pressed="true"] { color: #14200c; border-color: var(--green); background: var(--green); }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .item { padding: 1.2rem; border: 1px solid #ffffff19; border-radius: 1.1rem; background: linear-gradient(145deg, #202920, #171d17); transition: transform .18s ease, border-color .18s ease; }
+    .item:hover { transform: translateY(-4px); border-color: #b6f36b70; }
+    .item[hidden] { display: none; }
+    .item-top { display: flex; align-items: center; justify-content: space-between; }
+    .icon { display: grid; width: 50px; height: 50px; place-items: center; border-radius: 15px; background: #ffffff12; font-size: 1.65rem; }
+    .category { color: var(--green); font-size: .7rem; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
+    .item h3 { margin: 1rem 0 .35rem; font-size: 1.15rem; }
+    .item p { min-height: 2.8em; margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.55; }
+    .item-link { display: inline-block; margin-top: 1rem; color: var(--green); font-size: .86rem; font-weight: 850; }
+    .demo-note { margin: 1.4rem 0 0; padding: 1rem 1.1rem; border: 1px solid #b6f36b35; border-radius: .85rem; color: #d0d8c8; background: #b6f36b0d; font-size: .87rem; line-height: 1.6; }
+    footer { border-top: 1px solid #ffffff18; color: #9aa493; font-size: .83rem; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; padding: 1.4rem 0; }
+    .footer-inner p { margin: 0; }
+    :focus-visible { outline: 3px solid #d7ffa2; outline-offset: 3px; }
+    @media (max-width: 800px) { .hero { grid-template-columns: 1fr; padding-top: 3.6rem; } .hero-art { min-height: 230px; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 560px) { .nav { min-height: 66px; flex-wrap: wrap; gap: .25rem; padding: .7rem 0; } nav { width: 100%; justify-content: space-between; } .nav-link { padding: .55rem .65rem; font-size: .82rem; } .brand { font-size: 1rem; } .hero { padding: 2.8rem 0; } .grid { grid-template-columns: 1fr; } .catalog-head { align-items: start; flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
   </style>
 </head>
 <body>
   <header>
-    <div class="nav">
-      <p class="brand">Recarga<span>Zone</span> ⚡</p>
-      <span class="demo">BROMA · DEMO</span>
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="SeVenexRCG.com, inicio"><span class="brand-mark" aria-hidden="true">S</span>SeVenex<span>RCG</span>.com</a>
+      <nav aria-label="Menú principal">
+        <a class="nav-link active" href="#catalogo" data-filter-link="all">Inicio</a>
+        <a class="nav-link" href="#catalogo" data-filter-link="juegos">Juegos</a>
+        <a class="nav-link" href="#catalogo" data-filter-link="apps">Apps</a>
+        <a class="nav-link" href="#catalogo" data-filter-link="plataformas">Plataformas</a>
+      </nav>
     </div>
   </header>
-  <main>
-    <section class="hero" aria-labelledby="page-title">
-      <span class="eyebrow">🎮 Tu próxima partida empieza aquí</span>
-      <h1 id="page-title">Sube de <span>nivel.</span></h1>
-      <p>Explora packs mini gratis para tus juegos y apps favoritos. Elige uno y descubre la sorpresa: es una broma, no hay recargas reales.</p>
+  <main id="inicio" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <span class="eyebrow">Tu espacio digital</span>
+        <h1 id="hero-title">Todo tu mundo, <span>en un solo lugar.</span></h1>
+        <p class="hero-copy">Explora juegos, apps y plataformas desde una página pensada para la comunidad gamer. Encuentra tus favoritos en el catálogo.</p>
+        <div class="hero-actions"><a class="cta" href="#catalogo">Explorar catálogo&nbsp; ↓</a><a class="cta secondary" href="#categorias">Ver categorías</a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><span class="float one">🎮</span><span class="float two">🎧</span><div class="orb">⚡</div></div>
     </section>
-    <div class="section-heading">
-      <h2>⚡ Packs destacados</h2>
-      <span>Todos los packs de esta demo cuestan $0</span>
-    </div>
-    <section class="cards" aria-label="Packs mini de demostración">
-      <article class="card" style="--accent:#fb7185">
-        <div class="card-top"><div class="icon" aria-hidden="true">🔥</div><span class="mini-label">Battle royale</span></div>
-        <h3>Free Fire</h3><p class="pack">Pack mini · 100 diamantes</p>
-        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
-        <p class="disclaimer">No entrega diamantes reales.</p><button type="button" data-service="Free Fire">Elegir pack mini</button>
-      </article>
-      <article class="card" style="--accent:#e2e8f0">
-        <div class="card-top"><div class="icon" aria-hidden="true">🎮</div><span class="mini-label">Universo gamer</span></div>
-        <h3>Roblox</h3><p class="pack">Pack mini · 40 Robux</p>
-        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
-        <p class="disclaimer">No entrega Robux reales.</p><button type="button" data-service="Roblox">Elegir pack mini</button>
-      </article>
-      <article class="card" style="--accent:#4ade80">
-        <div class="card-top"><div class="icon" aria-hidden="true">🎵</div><span class="mini-label">Música</span></div>
-        <h3>Spotify</h3><p class="pack">Pack mini · 1 mes individual</p>
-        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
-        <p class="disclaimer">No activa una suscripción.</p><button type="button" data-service="Spotify">Elegir pack mini</button>
-      </article>
-      <article class="card" style="--accent:#facc15">
-        <div class="card-top"><div class="icon" aria-hidden="true">⛏️</div><span class="mini-label">Aventura</span></div>
-        <h3>Minecraft</h3><p class="pack">Pack mini · monedas de prueba</p>
-        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
-        <p class="disclaimer">Pack ficticio, sin monedas reales.</p><button type="button" data-service="Minecraft">Elegir pack mini</button>
-      </article>
-      <article class="card" style="--accent:#60a5fa">
-        <div class="card-top"><div class="icon" aria-hidden="true">🚗</div><span class="mini-label">Acción</span></div>
-        <h3>Call of Duty: Mobile</h3><p class="pack">Pack mini · puntos de prueba</p>
-        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
-        <p class="disclaimer">No entrega puntos ni objetos reales.</p><button type="button" data-service="Call of Duty: Mobile">Elegir pack mini</button>
-      </article>
-      <article class="card" style="--accent:#c084fc">
-        <div class="card-top"><div class="icon" aria-hidden="true">💬</div><span class="mini-label">Comunidad</span></div>
-        <h3>Discord Nitro</h3><p class="pack">Pack mini · mejora de prueba</p>
-        <div class="price-row"><p class="price">Gratis <small>· $0</small></p><span class="tag">Demo</span></div>
-        <p class="disclaimer">No activa Nitro ni suscripciones reales.</p><button type="button" data-service="Discord Nitro">Elegir pack mini</button>
-      </article>
+    <section class="catalog" id="catalogo" aria-labelledby="catalog-title">
+      <div class="catalog-head" id="categorias"><div><span class="eyebrow">Selección digital</span><h2 id="catalog-title">Explora el catálogo</h2></div><p>Elige una categoría para filtrar.</p></div>
+      <div class="filters" role="group" aria-label="Filtrar catálogo">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">Todo</button>
+        <button class="filter" type="button" data-filter="juegos" aria-pressed="false">🎮 Juegos</button>
+        <button class="filter" type="button" data-filter="apps" aria-pressed="false">📱 Apps</button>
+        <button class="filter" type="button" data-filter="plataformas" aria-pressed="false">🌐 Plataformas</button>
+      </div>
+      <div class="grid" id="catalogGrid">
+        <article class="item" data-category="juegos"><div class="item-top"><span class="icon" aria-hidden="true">🔥</span><span class="category">Juego</span></div><h3>Free Fire</h3><p>Acción y partidas rápidas para jugar con amigos.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
+        <article class="item" data-category="juegos"><div class="item-top"><span class="icon" aria-hidden="true">🧱</span><span class="category">Juego</span></div><h3>Roblox</h3><p>Experiencias, mundos y juegos creados por la comunidad.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
+        <article class="item" data-category="juegos"><div class="item-top"><span class="icon" aria-hidden="true">⛏️</span><span class="category">Juego</span></div><h3>Minecraft</h3><p>Aventura, construcción y creatividad sin límites.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
+        <article class="item" data-category="juegos"><div class="item-top"><span class="icon" aria-hidden="true">🎯</span><span class="category">Juego</span></div><h3>Call of Duty: Mobile</h3><p>Acción multijugador y modos para cada estilo.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
+        <article class="item" data-category="apps"><div class="item-top"><span class="icon" aria-hidden="true">🎵</span><span class="category">App</span></div><h3>Spotify</h3><p>Música, podcasts y listas para acompañar tu día.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
+        <article class="item" data-category="apps"><div class="item-top"><span class="icon" aria-hidden="true">💬</span><span class="category">App</span></div><h3>Discord</h3><p>Comunidades y chats para reunirte con tu equipo.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
+        <article class="item" data-category="plataformas"><div class="item-top"><span class="icon" aria-hidden="true">📺</span><span class="category">Plataforma</span></div><h3>YouTube</h3><p>Videos, creadores y contenido para descubrir.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
+        <article class="item" data-category="plataformas"><div class="item-top"><span class="icon" aria-hidden="true">🎬</span><span class="category">Plataforma</span></div><h3>Twitch</h3><p>Directos, esports y comunidades en vivo.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
+        <article class="item" data-category="plataformas"><div class="item-top"><span class="icon" aria-hidden="true">🕹️</span><span class="category">Plataforma</span></div><h3>Steam</h3><p>Una biblioteca digital para descubrir juegos de PC.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
+      </div>
+      <p class="demo-note" id="nota"><strong>Nota:</strong> SeVenexRCG.com es una maqueta de catálogo. Los nombres de productos pertenecen a sus respectivos titulares; esta página no es oficial, no está afiliada a esas marcas y no procesa pagos, recargas ni datos de usuario.</p>
     </section>
-    <p class="fine-print">⚠️ Esto es una broma interactiva y una maqueta no oficial. No introduzcas contraseñas ni datos personales. El usuario o ID escrito solo se procesa localmente en tu navegador; no se envía ni se guarda. No se realizan compras ni recargas reales.</p>
   </main>
-  <footer>RecargaZone · Demo no oficial · No afiliada a ninguna de las marcas mostradas.</footer>
-
-  <div class="overlay" id="formOverlay" hidden>
-    <section class="dialog" role="dialog" aria-modal="true" aria-labelledby="formTitle">
-      <h2 id="formTitle">🎁 Elegir pack mini</h2>
-      <p id="formDescription">Escribe tu usuario o ID para continuar con la broma.</p>
-      <form id="demoForm">
-        <label for="userId">Usuario o ID</label>
-        <input id="userId" name="userId" autocomplete="off" maxlength="40" required placeholder="Tu usuario o ID">
-        <p class="privacy">No pongas contraseñas. El dato no se envía ni se almacena.</p>
-        <div class="actions"><button class="secondary" id="cancelButton" type="button">Cancelar</button><button class="primary" type="submit">Continuar</button></div>
-      </form>
-    </section>
-  </div>
-  <div class="overlay" id="statusOverlay" hidden>
-    <section class="dialog status" role="status" aria-live="polite" aria-atomic="true">
-      <div id="loadingState"><div class="spinner" aria-hidden="true"></div><h2>Realizando tu compra…</h2><p>Preparando el pack mini de demostración.</p></div>
-      <div id="successState" hidden><div aria-hidden="true" style="font-size:3rem">✅</div><h2>¡Listo, tu recarga fue realizada!</h2><p>Un momento…</p></div>
-      <div id="prankState" hidden><div class="donkey" role="img" aria-label="Burro">🫏</div><h2>¡Caíste! 😄</h2><p>Era una broma. No se realizó ninguna compra ni recarga real.</p><button class="primary" id="closeButton" type="button" style="padding:.8rem 1.2rem;border:0;border-radius:.7rem;font-weight:850">Cerrar</button></div>
-    </section>
-  </div>
+  <footer><div class="wrap footer-inner"><p>© 2026 SeVenexRCG.com · Catálogo de demostración</p><p>No afiliado a las marcas mencionadas.</p></div></footer>
   <script>
-    const formOverlay = document.querySelector('#formOverlay');
-    const statusOverlay = document.querySelector('#statusOverlay');
-    const formDescription = document.querySelector('#formDescription');
-    const userIdInput = document.querySelector('#userId');
-    const loadingState = document.querySelector('#loadingState');
-    const successState = document.querySelector('#successState');
-    const prankState = document.querySelector('#prankState');
+    const filterButtons = document.querySelectorAll('.filter');
+    const filterLinks = document.querySelectorAll('[data-filter-link]');
+    const items = document.querySelectorAll('.item');
 
-    document.querySelectorAll('[data-service]').forEach((button) => {
-      button.addEventListener('click', () => {
-        formDescription.textContent = `Escribe tu usuario o ID de ${button.dataset.service} para continuar con la broma.`;
-        userIdInput.value = '';
-        formOverlay.hidden = false;
-        userIdInput.focus();
+    function setFilter(category) {
+      items.forEach((item) => {
+        item.hidden = category !== 'all' && item.dataset.category !== category;
       });
-    });
+      filterButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.filter === category));
+      });
+      filterLinks.forEach((link) => {
+        link.classList.toggle('active', link.dataset.filterLink === category || (category === 'all' && link.dataset.filterLink === 'all'));
+      });
+    }
 
-    document.querySelector('#cancelButton').addEventListener('click', () => {
-      formOverlay.hidden = true;
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => setFilter(button.dataset.filter));
     });
-
-    document.querySelector('#demoForm').addEventListener('submit', (event) => {
-      event.preventDefault();
-      if (!userIdInput.value.trim()) return;
-      // El identificador solo se valida localmente; no se envía ni se guarda.
-      formOverlay.hidden = true;
-      loadingState.hidden = false;
-      successState.hidden = true;
-      prankState.hidden = true;
-      statusOverlay.hidden = false;
-      window.setTimeout(() => {
-        loadingState.hidden = true;
-        successState.hidden = false;
-        window.setTimeout(() => {
-          successState.hidden = true;
-          prankState.hidden = false;
-          document.querySelector('#closeButton').focus();
-        }, 2000);
-      }, 1800);
-    });
-
-    document.querySelector('#closeButton').addEventListener('click', () => {
-      statusOverlay.hidden = true;
+    filterLinks.forEach((link) => {
+      link.addEventListener('click', () => setFilter(link.dataset.filterLink));
     });
   </script>
 </body>
