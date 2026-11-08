@@ -4,104 +4,48 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#101510">
-  <meta name="description" content="SeVenexRCG.com — catálogo de demostración de juegos, apps y plataformas.">
-  <title>SeVenexRCG.com — Juegos, apps y plataformas</title>
+  <meta name="description" content="VenexRCG — catálogo de demostración de juegos, apps y plataformas.">
+  <title>VenexRCG — Juegos, apps y plataformas</title>
   <style>
-    :root {
-      color-scheme: dark;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #f5f7f2;
-      background: #101510;
-      --green: #b6f36b;
-      --muted: #a7afa2;
-      --panel: #1a211a;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; min-height: 100vh; background: radial-gradient(ellipse at 75% -15%, #3c562a 0, #1a2418 28rem, #101510 65rem); }
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
-    header { position: sticky; top: 0; z-index: 3; border-bottom: 1px solid #ffffff18; background: #101510ed; backdrop-filter: blur(14px); }
-    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
-    .brand { display: flex; align-items: center; gap: .65rem; font-size: 1.15rem; font-weight: 950; letter-spacing: -.04em; white-space: nowrap; }
-    .brand-mark { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 12px; color: #14200c; background: var(--green); }
-    .brand span { color: var(--green); }
-    nav { display: flex; align-items: center; gap: .45rem; }
-    .nav-link { padding: .65rem .85rem; border-radius: 999px; color: #c4cbbf; font-size: .9rem; font-weight: 750; transition: background .15s, color .15s; }
-    .nav-link:hover, .nav-link.active { color: #13190e; background: var(--green); }
-    .hero { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 2rem; padding: 5.2rem 0 4rem; }
-    .eyebrow { color: var(--green); font-size: .78rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
-    h1 { max-width: 700px; margin: .9rem 0 1rem; font-size: clamp(2.8rem, 7vw, 5.4rem); line-height: .96; letter-spacing: -.075em; }
-    h1 span { color: var(--green); }
-    .hero-copy { max-width: 590px; color: #c0c8b9; font-size: 1.05rem; line-height: 1.75; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
-    .cta { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: .7rem 1rem; border: 1px solid #b6f36b55; border-radius: .75rem; color: #101510; background: var(--green); font-weight: 850; }
-    .cta.secondary { color: #e7ecdf; background: #ffffff0a; border-color: #ffffff2a; }
-    .hero-art { min-height: 290px; display: grid; place-items: center; position: relative; overflow: hidden; border: 1px solid #ffffff1b; border-radius: 2rem; background: linear-gradient(140deg, #293a25, #151c16 72%); box-shadow: 0 30px 80px #0006; }
-    .hero-art::before, .hero-art::after { position: absolute; content: ""; border: 1px solid #b6f36b35; border-radius: 50%; }
-    .hero-art::before { width: 290px; height: 290px; }
-    .hero-art::after { width: 210px; height: 210px; }
-    .orb { z-index: 1; display: grid; width: 120px; height: 120px; place-items: center; border: 1px solid #ffffff4a; border-radius: 35px; color: #14200c; background: linear-gradient(135deg, #d7ffa2, #8ad244); box-shadow: 0 0 70px #b6f36b55; font-size: 3.2rem; transform: rotate(-8deg); }
-    .float { position: absolute; z-index: 2; display: grid; width: 54px; height: 54px; place-items: center; border: 1px solid #ffffff28; border-radius: 17px; background: #202a20; font-size: 1.5rem; box-shadow: 0 12px 30px #0005; }
-    .float.one { top: 22%; left: 20%; transform: rotate(-12deg); }
-    .float.two { right: 18%; bottom: 20%; transform: rotate(12deg); }
-    .catalog { padding: 1.5rem 0 4rem; }
-    .catalog-head { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
-    .catalog-head h2 { margin: .35rem 0 0; font-size: clamp(1.7rem, 4vw, 2.4rem); letter-spacing: -.05em; }
-    .catalog-head p { margin: 0; color: var(--muted); font-size: .9rem; }
-    .filters { display: flex; flex-wrap: wrap; gap: .55rem; margin: 1.3rem 0 1.2rem; }
-    .filter { padding: .62rem .95rem; border: 1px solid #ffffff24; border-radius: 999px; color: #d3dacd; background: #ffffff08; font: inherit; font-size: .87rem; font-weight: 750; cursor: pointer; }
-    .filter:hover, .filter[aria-pressed="true"] { color: #14200c; border-color: var(--green); background: var(--green); }
-    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-    .item { padding: 1.2rem; border: 1px solid #ffffff19; border-radius: 1.1rem; background: linear-gradient(145deg, #202920, #171d17); transition: transform .18s ease, border-color .18s ease; }
-    .item:hover { transform: translateY(-4px); border-color: #b6f36b70; }
-    .item[hidden] { display: none; }
-    .item-top { display: flex; align-items: center; justify-content: space-between; }
-    .icon { display: grid; width: 50px; height: 50px; place-items: center; border-radius: 15px; background: #ffffff12; font-size: 1.65rem; }
-    .category { color: var(--green); font-size: .7rem; font-weight: 850; letter-spacing: .11em; text-transform: uppercase; }
-    .item h3 { margin: 1rem 0 .35rem; font-size: 1.15rem; }
-    .item p { min-height: 2.8em; margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.55; }
-    .item-link { display: inline-block; margin-top: 1rem; color: var(--green); font-size: .86rem; font-weight: 850; }
-    .demo-note { margin: 1.4rem 0 0; padding: 1rem 1.1rem; border: 1px solid #b6f36b35; border-radius: .85rem; color: #d0d8c8; background: #b6f36b0d; font-size: .87rem; line-height: 1.6; }
-    footer { border-top: 1px solid #ffffff18; color: #9aa493; font-size: .83rem; }
-    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; padding: 1.4rem 0; }
-    .footer-inner p { margin: 0; }
-    :focus-visible { outline: 3px solid #d7ffa2; outline-offset: 3px; }
-    @media (max-width: 800px) { .hero { grid-template-columns: 1fr; padding-top: 3.6rem; } .hero-art { min-height: 230px; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 560px) { .nav { min-height: 66px; flex-wrap: wrap; gap: .25rem; padding: .7rem 0; } nav { width: 100%; justify-content: space-between; } .nav-link { padding: .55rem .65rem; font-size: .82rem; } .brand { font-size: 1rem; } .hero { padding: 2.8rem 0; } .grid { grid-template-columns: 1fr; } .catalog-head { align-items: start; flex-direction: column; } }
-    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+    :root{color-scheme:dark;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#f5f7f2;background:#101510;--green:#b6f36b;--muted:#a7afa2}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 75% -15%,#3c562a 0,#1a2418 28rem,#101510 65rem)}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 2rem));margin:0 auto}header{position:sticky;top:0;z-index:2;border-bottom:1px solid #ffffff18;background:#101510ed;backdrop-filter:blur(14px)}
+    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:1.5rem}.brand{display:flex;align-items:center;gap:.65rem;font-size:1.15rem;font-weight:950;letter-spacing:-.04em;white-space:nowrap}.brand-mark{display:grid;width:38px;height:38px;place-items:center;border-radius:12px;color:#14200c;background:var(--green)}.brand span{color:var(--green)}
+    nav{display:flex;align-items:center;gap:.45rem}.nav-link{padding:.65rem .85rem;border-radius:999px;color:#c4cbbf;font-size:.9rem;font-weight:750}.nav-link:hover,.nav-link.active{color:#13190e;background:var(--green)}
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:2rem;padding:5.2rem 0 4rem}.eyebrow{color:var(--green);font-size:.78rem;font-weight:900;letter-spacing:.16em;text-transform:uppercase}h1{max-width:700px;margin:.9rem 0 1rem;font-size:clamp(2.8rem,7vw,5.4rem);line-height:.96;letter-spacing:-.075em}h1 span{color:var(--green)}.hero-copy{max-width:590px;color:#c0c8b9;font-size:1.05rem;line-height:1.75}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:1.5rem}.cta{display:inline-flex;min-height:46px;align-items:center;justify-content:center;padding:.7rem 1rem;border:1px solid #b6f36b55;border-radius:.75rem;color:#101510;background:var(--green);font-weight:850}.cta.secondary{color:#e7ecdf;background:#ffffff0a;border-color:#ffffff2a}
+    .hero-art{min-height:290px;display:grid;place-items:center;position:relative;overflow:hidden;border:1px solid #ffffff1b;border-radius:2rem;background:linear-gradient(140deg,#293a25,#151c16);box-shadow:0 30px 80px #0006}.hero-art:before,.hero-art:after{position:absolute;content:"";border:1px solid #b6f36b35;border-radius:50%}.hero-art:before{width:290px;height:290px}.hero-art:after{width:210px;height:210px}.orb{z-index:1;display:grid;width:120px;height:120px;place-items:center;border:1px solid #ffffff4a;border-radius:35px;color:#14200c;background:linear-gradient(135deg,#d7ffa2,#8ad244);box-shadow:0 0 70px #b6f36b55;font-size:3.2rem;transform:rotate(-8deg)}.float{position:absolute;z-index:2;display:grid;width:54px;height:54px;place-items:center;border:1px solid #ffffff28;border-radius:17px;background:#202a20;font-size:1.5rem}.float.one{top:22%;left:20%;transform:rotate(-12deg)}.float.two{right:18%;bottom:20%;transform:rotate(12deg)}
+    .catalog{padding:1.5rem 0 4rem}.catalog-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.25rem}.catalog-head h2{margin:.35rem 0 0;font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.05em}.catalog-head p{margin:0;color:var(--muted);font-size:.9rem}.filters{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.3rem 0 1.2rem}.filter{padding:.62rem .95rem;border:1px solid #ffffff24;border-radius:999px;color:#d3dacd;background:#ffffff08;font:inherit;font-size:.87rem;font-weight:750;cursor:pointer}.filter:hover,.filter[aria-pressed="true"]{color:#14200c;border-color:var(--green);background:var(--green)}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.item{padding:1.2rem;border:1px solid #ffffff19;border-radius:1.1rem;background:linear-gradient(145deg,#202920,#171d17);transition:transform .18s,border-color .18s}.item:hover{transform:translateY(-4px);border-color:#b6f36b70}.item[hidden]{display:none}.item-top{display:flex;align-items:center;justify-content:space-between}.icon{display:grid;width:50px;height:50px;place-items:center;border-radius:15px;background:#ffffff12;font-size:1.65rem}.category{color:var(--green);font-size:.7rem;font-weight:850;letter-spacing:.11em;text-transform:uppercase}.item h3{margin:1rem 0 .35rem;font-size:1.15rem}.item p{min-height:2.8em;margin:0;color:var(--muted);font-size:.88rem;line-height:1.55}.item-link{display:inline-block;margin-top:1rem;color:var(--green);font-size:.86rem;font-weight:850}.demo-note{margin:1.4rem 0 0;padding:1rem 1.1rem;border:1px solid #b6f36b35;border-radius:.85rem;color:#d0d8c8;background:#b6f36b0d;font-size:.87rem;line-height:1.6}
+    footer{border-top:1px solid #ffffff18;color:#9aa493;font-size:.83rem}.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.75rem;padding:1.4rem 0}.footer-inner p{margin:0}:focus-visible{outline:3px solid #d7ffa2;outline-offset:3px}
+    .welcome{position:fixed;inset:0;z-index:10;display:grid;place-items:center;padding:1rem;background:radial-gradient(ellipse at center,#3c562a,#101510 70%);text-align:center;transition:opacity .45s ease,visibility .45s ease}.welcome.done{opacity:0;visibility:hidden;pointer-events:none}.welcome-box{animation:rise .6s ease both}.welcome-mark{display:grid;width:82px;height:82px;margin:0 auto 1.5rem;place-items:center;border:1px solid #d7ffa277;border-radius:26px;color:#14200c;background:linear-gradient(135deg,#d7ffa2,#8ad244);box-shadow:0 0 65px #b6f36b55;font-size:2.7rem;font-weight:1000}.welcome h2{margin:0;font-size:clamp(2rem,7vw,3.8rem);letter-spacing:-.06em}.welcome h2 span{color:var(--green)}.welcome p{color:#d0d8c8}.welcome small{color:#9aa493}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .auth-overlay{position:fixed;inset:0;z-index:8;display:grid;place-items:center;padding:1rem;background:#070a08c9;backdrop-filter:blur(9px);opacity:1;transition:opacity .3s}.auth-overlay[hidden]{display:none}.auth-card{width:min(420px,100%);padding:1.6rem;border:1px solid #b6f36b55;border-radius:1.2rem;background:linear-gradient(145deg,#202920,#121712);box-shadow:0 25px 80px #0009;text-align:center}.auth-card h2{margin:.2rem 0 .45rem;font-size:1.55rem}.auth-card>p{margin:.3rem 0 1.2rem;color:#b9c1b4;line-height:1.55}.auth-actions{display:grid;gap:.7rem}.auth-btn{min-height:48px;padding:.75rem 1rem;border:1px solid #ffffff24;border-radius:.72rem;color:#f5f7f2;background:#ffffff0a;font:inherit;font-weight:800;cursor:pointer}.auth-btn.primary{border-color:var(--green);color:#14200c;background:var(--green)}.auth-btn.google{color:#20251e;background:#f7f8f5;border-color:#e4e6df}.auth-message{min-height:1.4em;margin:.9rem 0 0!important;color:#d7ffa2!important;font-size:.84rem}.auth-note{margin-top:1rem!important;color:#929b8d!important;font-size:.77rem}
+    @media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:3.6rem}.hero-art{min-height:230px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:560px){.nav{min-height:66px;flex-wrap:wrap;gap:.25rem;padding:.7rem 0}nav{width:100%;justify-content:space-between}.nav-link{padding:.55rem .65rem;font-size:.82rem}.brand{font-size:1rem}.hero{padding:2.8rem 0}.grid{grid-template-columns:1fr}.catalog-head{align-items:start;flex-direction:column}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="#inicio" aria-label="SeVenexRCG.com, inicio"><span class="brand-mark" aria-hidden="true">S</span>SeVenex<span>RCG</span>.com</a>
-      <nav aria-label="Menú principal">
-        <a class="nav-link active" href="#catalogo" data-filter-link="all">Inicio</a>
-        <a class="nav-link" href="#catalogo" data-filter-link="juegos">Juegos</a>
-        <a class="nav-link" href="#catalogo" data-filter-link="apps">Apps</a>
-        <a class="nav-link" href="#catalogo" data-filter-link="plataformas">Plataformas</a>
-      </nav>
-    </div>
-  </header>
-  <main id="inicio" class="wrap">
-    <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <span class="eyebrow">Tu espacio digital</span>
-        <h1 id="hero-title">Todo tu mundo, <span>en un solo lugar.</span></h1>
-        <p class="hero-copy">Explora juegos, apps y plataformas desde una página pensada para la comunidad gamer. Encuentra tus favoritos en el catálogo.</p>
-        <div class="hero-actions"><a class="cta" href="#catalogo">Explorar catálogo&nbsp; ↓</a><a class="cta secondary" href="#categorias">Ver categorías</a></div>
+  <section class="welcome" id="welcome" aria-label="Bienvenida"><div class="welcome-box"><div class="welcome-mark" aria-hidden="true">V</div><h2>Hola, bienvenido a <span>VenexRCG</span></h2><p>Tu espacio para explorar juegos, apps y plataformas.</p><small>Preparando tu experiencia…</small></div></section>
+  <div class="auth-overlay" id="authOverlay" hidden>
+    <section class="auth-card" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+      <div class="welcome-mark" aria-hidden="true" style="width:58px;height:58px;margin-bottom:1rem;border-radius:18px;font-size:1.8rem">V</div>
+      <h2 id="authTitle">¡Qué bueno verte!</h2><p>Elige cómo quieres continuar.</p>
+      <div class="auth-actions">
+        <button class="auth-btn primary" type="button" data-auth="iniciar sesión">Iniciar sesión</button>
+        <button class="auth-btn" type="button" data-auth="registrarte">Registrarse</button>
+        <button class="auth-btn google" type="button" data-auth="Google">G&nbsp; Continuar con Google</button>
       </div>
-      <div class="hero-art" aria-hidden="true"><span class="float one">🎮</span><span class="float two">🎧</span><div class="orb">⚡</div></div>
+      <p class="auth-message" id="authMessage" role="status" aria-live="polite"></p>
+      <p class="auth-note">Demostración visual: la autenticación todavía no está conectada. No introduzcas contraseñas ni datos personales.</p>
     </section>
-    <section class="catalog" id="catalogo" aria-labelledby="catalog-title">
-      <div class="catalog-head" id="categorias"><div><span class="eyebrow">Selección digital</span><h2 id="catalog-title">Explora el catálogo</h2></div><p>Elige una categoría para filtrar.</p></div>
-      <div class="filters" role="group" aria-label="Filtrar catálogo">
-        <button class="filter" type="button" data-filter="all" aria-pressed="true">Todo</button>
-        <button class="filter" type="button" data-filter="juegos" aria-pressed="false">🎮 Juegos</button>
-        <button class="filter" type="button" data-filter="apps" aria-pressed="false">📱 Apps</button>
-        <button class="filter" type="button" data-filter="plataformas" aria-pressed="false">🌐 Plataformas</button>
-      </div>
+  </div>
+  <header><div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="VenexRCG, inicio"><span class="brand-mark" aria-hidden="true">V</span>Venex<span>RCG</span>.com</a>
+    <nav aria-label="Menú principal"><a class="nav-link active" href="#catalogo" data-filter-link="all">Inicio</a><a class="nav-link" href="#catalogo" data-filter-link="juegos">Juegos</a><a class="nav-link" href="#catalogo" data-filter-link="apps">Apps</a><a class="nav-link" href="#catalogo" data-filter-link="plataformas">Plataformas</a></nav>
+  </div></header>
+  <main id="inicio" class="wrap">
+    <section class="hero" aria-labelledby="hero-title"><div><span class="eyebrow">Tu espacio digital</span><h1 id="hero-title">Todo tu mundo, <span>en un solo lugar.</span></h1><p class="hero-copy">Explora juegos, apps y plataformas desde una página pensada para la comunidad gamer. Encuentra tus favoritos en el catálogo.</p><div class="hero-actions"><a class="cta" href="#catalogo">Explorar catálogo&nbsp; ↓</a><a class="cta secondary" href="#categorias">Ver categorías</a></div></div><div class="hero-art" aria-hidden="true"><span class="float one">🎮</span><span class="float two">🎧</span><div class="orb">⚡</div></div></section>
+    <section class="catalog" id="catalogo" aria-labelledby="catalog-title"><div class="catalog-head" id="categorias"><div><span class="eyebrow">Selección digital</span><h2 id="catalog-title">Explora el catálogo</h2></div><p>Elige una categoría para filtrar.</p></div>
+      <div class="filters" role="group" aria-label="Filtrar catálogo"><button class="filter" type="button" data-filter="all" aria-pressed="true">Todo</button><button class="filter" type="button" data-filter="juegos" aria-pressed="false">🎮 Juegos</button><button class="filter" type="button" data-filter="apps" aria-pressed="false">📱 Apps</button><button class="filter" type="button" data-filter="plataformas" aria-pressed="false">🌐 Plataformas</button></div>
       <div class="grid" id="catalogGrid">
         <article class="item" data-category="juegos"><div class="item-top"><span class="icon" aria-hidden="true">🔥</span><span class="category">Juego</span></div><h3>Free Fire</h3><p>Acción y partidas rápidas para jugar con amigos.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
         <article class="item" data-category="juegos"><div class="item-top"><span class="icon" aria-hidden="true">🧱</span><span class="category">Juego</span></div><h3>Roblox</h3><p>Experiencias, mundos y juegos creados por la comunidad.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
@@ -113,33 +57,22 @@
         <article class="item" data-category="plataformas"><div class="item-top"><span class="icon" aria-hidden="true">🎬</span><span class="category">Plataforma</span></div><h3>Twitch</h3><p>Directos, esports y comunidades en vivo.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
         <article class="item" data-category="plataformas"><div class="item-top"><span class="icon" aria-hidden="true">🕹️</span><span class="category">Plataforma</span></div><h3>Steam</h3><p>Una biblioteca digital para descubrir juegos de PC.</p><a class="item-link" href="#nota">Ver categoría&nbsp; →</a></article>
       </div>
-      <p class="demo-note" id="nota"><strong>Nota:</strong> SeVenexRCG.com es una maqueta de catálogo. Los nombres de productos pertenecen a sus respectivos titulares; esta página no es oficial, no está afiliada a esas marcas y no procesa pagos, recargas ni datos de usuario.</p>
+      <p class="demo-note" id="nota"><strong>Nota:</strong> VenexRCG.com es una maqueta de catálogo. Los nombres de productos pertenecen a sus respectivos titulares; esta página no es oficial, no está afiliada a esas marcas y no procesa pagos, recargas ni datos de usuario.</p>
     </section>
   </main>
-  <footer><div class="wrap footer-inner"><p>© 2026 SeVenexRCG.com · Catálogo de demostración</p><p>No afiliado a las marcas mencionadas.</p></div></footer>
+  <footer><div class="wrap footer-inner"><p>© 2026 VenexRCG.com · Catálogo de demostración</p><p>No afiliado a las marcas mencionadas.</p></div></footer>
   <script>
-    const filterButtons = document.querySelectorAll('.filter');
-    const filterLinks = document.querySelectorAll('[data-filter-link]');
-    const items = document.querySelectorAll('.item');
-
-    function setFilter(category) {
-      items.forEach((item) => {
-        item.hidden = category !== 'all' && item.dataset.category !== category;
-      });
-      filterButtons.forEach((button) => {
-        button.setAttribute('aria-pressed', String(button.dataset.filter === category));
-      });
-      filterLinks.forEach((link) => {
-        link.classList.toggle('active', link.dataset.filterLink === category || (category === 'all' && link.dataset.filterLink === 'all'));
-      });
-    }
-
-    filterButtons.forEach((button) => {
-      button.addEventListener('click', () => setFilter(button.dataset.filter));
-    });
-    filterLinks.forEach((link) => {
-      link.addEventListener('click', () => setFilter(link.dataset.filterLink));
-    });
+    const filterButtons=document.querySelectorAll('.filter');
+    const filterLinks=document.querySelectorAll('[data-filter-link]');
+    const items=document.querySelectorAll('.item');
+    function setFilter(category){items.forEach(item=>{item.hidden=category!=='all'&&item.dataset.category!==category});filterButtons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.filter===category)));filterLinks.forEach(link=>link.classList.toggle('active',link.dataset.filterLink===category||(category==='all'&&link.dataset.filterLink==='all')))}
+    filterButtons.forEach(button=>button.addEventListener('click',()=>setFilter(button.dataset.filter)));
+    filterLinks.forEach(link=>link.addEventListener('click',()=>setFilter(link.dataset.filterLink)));
+    const welcome=document.querySelector('#welcome');
+    const authOverlay=document.querySelector('#authOverlay');
+    const authMessage=document.querySelector('#authMessage');
+    window.setTimeout(()=>{welcome.classList.add('done');authOverlay.hidden=false;document.querySelector('[data-auth]').focus()},3000);
+    document.querySelectorAll('[data-auth]').forEach(button=>button.addEventListener('click',()=>{authMessage.textContent=button.dataset.auth==='Google'?'El acceso con Google aún no está configurado. No se conectó ninguna cuenta.':`La opción “${button.dataset.auth}” es solo una vista previa; no se solicitan ni guardan credenciales.`}));
   </script>
 </body>
 </html>
